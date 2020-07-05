@@ -1,141 +1,99 @@
+/*
+	@author  Robson Dornelles Ruiz
+	@version 2.0
+	@email   robsondorn@gmail.com
+*/
+
 package listasequencial;
 
 public class AddOndeNull {
-
-    private String[] vetor;
+    private String[] filmesPreferidos;
     private int proximoIndice;
     
-    int a = 0, b = 0, i = 0;
+    int contVazia = 0, contCheia = 0, indice = 0, posicao = 0;
     
-    public void verificar(){
-        for(i = 0; i < vetor.length; i++){
-            if(vetor[i] == null){
-
-                a++;
-
-                if(a == vetor.length){
-
+    public void verificarLista(){
+        for(indice = 0; indice < filmesPreferidos.length; indice++){
+            if(filmesPreferidos[indice] == null){
+            	contVazia++;
+                
+                if(contVazia == filmesPreferidos.length){
+                	contVazia = 0;
                     vazia();
-                    System.out.println("Vazia");
-
                 }
-
             }
-            else if(vetor[i]!=null){
-
-                b++;
-
-                if(b == vetor.length){
-
+            else if(filmesPreferidos[indice]!=null){
+            	contCheia++;
+                
+                if(contCheia == filmesPreferidos.length){
+                	contCheia = 0;
                     cheia();
-                    System.out.println("Cheia");
-
                 }
-
             }
         }
     }
     
-    int j = 0;
-    int y = 0;
-    
-    public void adicionaPosicaoY(String dado, int y){
-        
-        for(j = proximoIndice; j < vetor.length; j--){
-          
-            if(j >= y){
-                
-                vetor[j] = vetor[j-1];
-                
-            }
-            
+    public void adicionaPosicaoY(String dado, int posicao){
+        for(indice = proximoIndice; indice < filmesPreferidos.length; indice--){
+            if(indice >= posicao){ 
+                filmesPreferidos[indice] = filmesPreferidos[indice-1];    
+            } 
         }
-        
-        vetor[y] = dado;
-        proximoIndice++;
-        
+       
+        filmesPreferidos[posicao] = dado;
+        proximoIndice++;   
     }
     
-    public void adicionaInicio(String dado, int y){
-              
-        for(j = proximoIndice; j < vetor.length; j--){
-            
-            if(j > y){
-                
-                vetor[j] = vetor[j-1];
-        
+    public void adicionaInicio(String dado){ 
+    	//... substitui as posições dos filmes já adicionados para poder colocar o filme que vem por parâmetro no início
+        for(indice = proximoIndice; indice < filmesPreferidos.length; indice--){ 
+        	// garante que uma posição inexistente não seja acessada causando erro
+            if(indice > 0) {    
+                filmesPreferidos[indice] = filmesPreferidos[indice-1];
             }
-            
         }
         
-        vetor[0] = dado;
+        filmesPreferidos[0] = dado;
         proximoIndice++;
-        
     }
     
     public AddOndeNull(int tamanho){
-        
-        vetor = new String[tamanho];
+        filmesPreferidos = new String[tamanho];
         proximoIndice = 0;        
-        
     }
     
     public void remover(String dado){
-        
-        boolean troca = false;
-        int a = 0, b = 0;
-        
-        for(int i = 0; i < vetor.length; i++){
-            
-            if(vetor[i] != null && vetor[i].equals(dado)){
-                
-                vetor[i] = vetor[i+1];
-                troca = true;
+        for(int indice = 0; indice < filmesPreferidos.length; indice++){
+            if(filmesPreferidos[indice] == dado){
+                filmesPreferidos[indice] = filmesPreferidos[indice+1];
                 proximoIndice--;
-                
-                if (troca){
+                filmesPreferidos[indice] = filmesPreferidos[indice+1];
                     
-                    vetor[i] = vetor[i+1];
-                    
-                    if(vetor[i] == null){
-                        break;
-                    }
-                    
+                if(filmesPreferidos[indice] == null){
+                	break;
                 }
-                
             }
-            
         }
-        
     }
     
     public void adicionar(String novoDado){
-        
-        vetor[proximoIndice] = novoDado;
+        filmesPreferidos[proximoIndice] = novoDado;
         proximoIndice++;
-         
     }
     
-    public void imprimeVetor(){
-        
-        for(int i = 0; i < proximoIndice; i++){
-                
-            System.out.println(vetor[i]);
-                        
+    public void imprimeFilmesPreferidos(){
+        for(indice = 0; indice < proximoIndice; indice++){
+            System.out.println(filmesPreferidos[i]);         
         }
-        
     }
     
     public boolean vazia(){
-        
-        return proximoIndice == 0;
-        
+        System.out.println("Vazia");
+        return proximoIndice == 0;  
     }
-    
+   
     public boolean cheia(){
-        
-        return proximoIndice == vetor.length;
-        
+        System.out.println("Cheia");
+        return proximoIndice == filmesPreferidos.length; 
     }
-    
 }
