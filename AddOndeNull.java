@@ -65,20 +65,14 @@ public class AddOndeNull {
     }
     
     public void remover(String dado){
-        boolean troca = false;
-        
         for(int posicao = 0; posicao < filmesPreferidos.length; posicao++){
             if(filmesPreferidos[posicao] == dado){
                 filmesPreferidos[posicao] = filmesPreferidos[posicao+1];
-                troca = true;
                 proximoIndice--;
-                
-                if (troca){
-                    filmesPreferidos[posicao] = filmesPreferidos[posicao+1];
+                filmesPreferidos[posicao] = filmesPreferidos[posicao+1];
                     
-                    if(filmesPreferidos[posicao] == null){
-                        break;
-                    }
+                if(filmesPreferidos[posicao] == null){
+                	break;
                 }
             }
         }
