@@ -46,10 +46,10 @@ public class AddOndeNull {
         proximoIndice++;   
     }
     
-    public void adicionaInicio(String dado, int posicaoY){ 
-    	//... substitui as posi��es dos filmes j� adicionados para poder colocar o filme que vem por par�metro no in�cio
+    public void adicionaInicio(String dado){ 
+    	//... substitui as posições dos filmes já adicionados para poder colocar o filme que vem por parâmetro no início
         for(posicao = proximoIndice; posicao < filmesPreferidos.length; posicao--){ 
-        	// garante que uma posi��o inexistente n�o seja acessada causando erro
+        	// garante que uma posição inexistente não seja acessada causando erro
             if(posicao > 0) {    
                 filmesPreferidos[posicao] = filmesPreferidos[posicao-1];
             }
