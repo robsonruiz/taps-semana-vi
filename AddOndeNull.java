@@ -19,7 +19,6 @@ public class AddOndeNull {
                 
                 if(contVazia == filmesPreferidos.length){
                     vazia();
-                    System.out.println("Vazia");
                 }
             }
             else if(filmesPreferidos[posicao]!=null){
@@ -27,7 +26,6 @@ public class AddOndeNull {
                 
                 if(contCheia == filmesPreferidos.length){
                     cheia();
-                    System.out.println("Cheia");
                 }
             }
         }
@@ -96,10 +94,12 @@ public class AddOndeNull {
     }
     
     public boolean vazia(){
+        System.out.println("Vazia");
         return proximoIndice == 0;  
     }
    
     public boolean cheia(){
+        System.out.println("Cheia");
         return proximoIndice == filmesPreferidos.length; 
     }
 }
