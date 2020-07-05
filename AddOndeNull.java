@@ -18,6 +18,7 @@ public class AddOndeNull {
             	contVazia++;
                 
                 if(contVazia == filmesPreferidos.length){
+                	contVazia = 0;
                     vazia();
                 }
             }
@@ -25,6 +26,7 @@ public class AddOndeNull {
             	contCheia++;
                 
                 if(contCheia == filmesPreferidos.length){
+                	contCheia = 0;
                     cheia();
                 }
             }
