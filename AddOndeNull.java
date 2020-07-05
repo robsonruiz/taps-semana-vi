@@ -10,11 +10,11 @@ public class AddOndeNull {
     private String[] filmesPreferidos;
     private int proximoIndice;
     
-    int contVazia = 0, contCheia = 0, posicao = 0;
+    int contVazia = 0, contCheia = 0, indice = 0, posicao = 0;
     
-    public void verificar(){
-        for(posicao = 0; posicao < filmesPreferidos.length; posicao++){
-            if(filmesPreferidos[posicao] == null){
+    public void verificarLista(){
+        for(indice = 0; indice < filmesPreferidos.length; indice++){
+            if(filmesPreferidos[indice] == null){
             	contVazia++;
                 
                 if(contVazia == filmesPreferidos.length){
@@ -22,7 +22,7 @@ public class AddOndeNull {
                     vazia();
                 }
             }
-            else if(filmesPreferidos[posicao]!=null){
+            else if(filmesPreferidos[indice]!=null){
             	contCheia++;
                 
                 if(contCheia == filmesPreferidos.length){
@@ -33,25 +33,23 @@ public class AddOndeNull {
         }
     }
     
-    int posicaoY = 0;
-    
-    public void adicionaPosicaoY(String dado, int posicaoY){
-        for(posicao = proximoIndice; posicao < filmesPreferidos.length; posicao--){
-            if(posicao >= posicaoY){ 
-                filmesPreferidos[posicao] = filmesPreferidos[posicao-1];    
+    public void adicionaPosicaoY(String dado, int posicao){
+        for(indice = proximoIndice; indice < filmesPreferidos.length; indice--){
+            if(indice >= posicao){ 
+                filmesPreferidos[indice] = filmesPreferidos[indice-1];    
             } 
         }
        
-        filmesPreferidos[posicaoY] = dado;
+        filmesPreferidos[posicao] = dado;
         proximoIndice++;   
     }
     
     public void adicionaInicio(String dado){ 
     	//... substitui as posições dos filmes já adicionados para poder colocar o filme que vem por parâmetro no início
-        for(posicao = proximoIndice; posicao < filmesPreferidos.length; posicao--){ 
+        for(indice = proximoIndice; indice < filmesPreferidos.length; indice--){ 
         	// garante que uma posição inexistente não seja acessada causando erro
-            if(posicao > 0) {    
-                filmesPreferidos[posicao] = filmesPreferidos[posicao-1];
+            if(indice > 0) {    
+                filmesPreferidos[indice] = filmesPreferidos[indice-1];
             }
         }
         
@@ -65,13 +63,13 @@ public class AddOndeNull {
     }
     
     public void remover(String dado){
-        for(int posicao = 0; posicao < filmesPreferidos.length; posicao++){
-            if(filmesPreferidos[posicao] == dado){
-                filmesPreferidos[posicao] = filmesPreferidos[posicao+1];
+        for(int indice = 0; indice < filmesPreferidos.length; indice++){
+            if(filmesPreferidos[indice] == dado){
+                filmesPreferidos[indice] = filmesPreferidos[indice+1];
                 proximoIndice--;
-                filmesPreferidos[posicao] = filmesPreferidos[posicao+1];
+                filmesPreferidos[indice] = filmesPreferidos[indice+1];
                     
-                if(filmesPreferidos[posicao] == null){
+                if(filmesPreferidos[indice] == null){
                 	break;
                 }
             }
@@ -84,7 +82,7 @@ public class AddOndeNull {
     }
     
     public void imprimeFilmesPreferidos(){
-        for(posicao = 0; posicao < proximoIndice; posicao++){
+        for(indice = 0; indice < proximoIndice; indice++){
             System.out.println(filmesPreferidos[i]);         
         }
     }
