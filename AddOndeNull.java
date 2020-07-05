@@ -47,12 +47,14 @@ public class AddOndeNull {
     }
     
     public void adicionaInicio(String dado, int posicaoY){ 
-        for(posicao = proximoIndice; posicao < filmesPreferidos.length; posicao--){
-            if(posicao > posicaoY){
+    	//... substitui as posi��es dos filmes j� adicionados para poder colocar o filme que vem por par�metro no in�cio
+        for(posicao = proximoIndice; posicao < filmesPreferidos.length; posicao--){ 
+        	// garante que uma posi��o inexistente n�o seja acessada causando erro
+            if(posicao > 0) {    
                 filmesPreferidos[posicao] = filmesPreferidos[posicao-1];
-            } 
+            }
         }
-       
+        
         filmesPreferidos[0] = dado;
         proximoIndice++;
     }
