@@ -1,25 +1,25 @@
 package listasequencial;
 
 public class AddOndeNull {
-    private String[] vetor;
+    private String[] filmesPreferidos;
     private int proximoIndice;
     
-    int a = 0, b = 0, i = 0;
+    int contVazia = 0, contCheia = 0, posicao = 0;
     
     public void verificar(){
-        for(i = 0; i < vetor.length; i++){
-            if(vetor[i] == null){
-                a++;
+        for(posicao = 0; posicao < filmesPreferidos.length; posicao++){
+            if(filmesPreferidos[posicao] == null){
+            	contVazia++;
                 
-                if(a == vetor.length){
+                if(contVazia == filmesPreferidos.length){
                     vazia();
                     System.out.println("Vazia");
                 }
             }
-            else if(vetor[i]!=null){
-                b++;
+            else if(filmesPreferidos[posicao]!=null){
+            	contCheia++;
                 
-                if(b == vetor.length){
+                if(contCheia == filmesPreferidos.length){
                     cheia();
                     System.out.println("Cheia");
                 }
@@ -27,33 +27,32 @@ public class AddOndeNull {
         }
     }
     
-    int j = 0;
-    int y = 0;
+    int posicaoY = 0;
     
-    public void adicionaPosicaoY(String dado, int y){
-        for(j = proximoIndice; j < vetor.length; j--){
-            if(j >= y){ 
-                vetor[j] = vetor[j-1];    
+    public void adicionaPosicaoY(String dado, int posicaoY){
+        for(posicao = proximoIndice; posicao < filmesPreferidos.length; posicao--){
+            if(posicao >= posicaoY){ 
+                filmesPreferidos[posicao] = filmesPreferidos[posicao-1];    
             } 
         }
        
-        vetor[y] = dado;
+        filmesPreferidos[posicaoY] = dado;
         proximoIndice++;   
     }
     
-    public void adicionaInicio(String dado, int y){ 
-        for(j = proximoIndice; j < vetor.length; j--){
-            if(j > y){
-                vetor[j] = vetor[j-1];
+    public void adicionaInicio(String dado, int posicaoY){ 
+        for(posicao = proximoIndice; posicao < filmesPreferidos.length; posicao--){
+            if(posicao > posicaoY){
+                filmesPreferidos[posicao] = filmesPreferidos[posicao-1];
             } 
         }
        
-        vetor[0] = dado;
+        filmesPreferidos[0] = dado;
         proximoIndice++;
     }
     
     public AddOndeNull(int tamanho){
-        vetor = new String[tamanho];
+        filmesPreferidos = new String[tamanho];
         proximoIndice = 0;        
     }
     
@@ -61,16 +60,16 @@ public class AddOndeNull {
         boolean troca = false;
         int a = 0, b = 0;
         
-        for(int i = 0; i < vetor.length; i++){
-            if(vetor[i] != null && vetor[i].equals(dado)){
-                vetor[i] = vetor[i+1];
+        for(posicao = 0; posicao < filmesPreferidos.length; posicao++){
+            if(filmesPreferidos[posicao] != null && filmesPreferidos[posicao].equals(dado)){
+                filmesPreferidos[posicao] = filmesPreferidos[posicao+1];
                 troca = true;
                 proximoIndice--;
                 
                 if(troca){
-                    vetor[i] = vetor[i+1];
+                    filmesPreferidos[posicao] = filmesPreferidos[posicao+1];
                     
-                    if(vetor[i] == null){
+                    if(filmesPreferidos[posicao] == null){
                         break;
                     }   
                 }   
@@ -79,13 +78,13 @@ public class AddOndeNull {
     }
     
     public void adicionar(String novoDado){
-        vetor[proximoIndice] = novoDado;
+        filmesPreferidos[proximoIndice] = novoDado;
         proximoIndice++;
     }
     
-    public void imprimeVetor(){
-        for(int i = 0; i < proximoIndice; i++){
-            System.out.println(vetor[i]);         
+    public void imprimeFilmesPreferidos(){
+        for(posicao = 0; posicao < proximoIndice; posicao++){
+            System.out.println(filmesPreferidos[i]);         
         }
     }
     
@@ -94,6 +93,6 @@ public class AddOndeNull {
     }
    
     public boolean cheia(){
-        return proximoIndice == vetor.length; 
+        return proximoIndice == filmesPreferidos.length; 
     }
 }
