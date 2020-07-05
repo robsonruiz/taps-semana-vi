@@ -1,3 +1,9 @@
+/*
+	@author  Robson Dornelles Ruiz
+	@version 2.0
+	@email   robsondorn@gmail.com
+*/
+
 package listasequencial;
 
 public class AddOndeNull {
